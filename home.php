@@ -18,7 +18,7 @@ if (!isset($_SESSION['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>主页</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -36,7 +36,7 @@ if (!isset($_SESSION['username'])) {
     <header class="navbar-section">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="bi bi-chat"></i> Brag Spot</a>
+                <a class="navbar-brand" href="#"><i class="bi bi-chat"></i> XXXXXXXXXX</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,19 +44,19 @@ if (!isset($_SESSION['username'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#home">Home</a>
+                            <a class="nav-link" aria-current="page" href="#home">主页</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#services">services</a>
+                            <a class="nav-link" href="#services">服务</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">about us</a>
+                            <a class="nav-link" href="#about">关于我们</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#projects">projects</a>
+                            <a class="nav-link" href="#projects">发布信息</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">contact</a>
+                            <a class="nav-link" href="#contact">联系我们</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -117,10 +117,10 @@ if (!isset($_SESSION['username'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12 text-content">
-                    <h1>the digital service you really want</h1>
-                    <p>We build effective strategies to help you reach customers and prospects across the entire web.
+                    <!-- <h1>the digital service you really want</h1> -->
+                    <p>我们是一个信息发布网站，您可以在这里发布信息，并查看其他用户发布的信息.
                     </p>
-                    <button class="btn"><a href="#">Estimate Project</a></button>
+                    <button class="btn"><a href="#">发布信息</a></button>
                 </div>
                 <div class="col-lg-8 col-md-12 col-sm-12">
                     <img src="images/hero-image.png" alt="" class="img-fluid">
