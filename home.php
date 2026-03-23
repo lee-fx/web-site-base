@@ -20,13 +20,13 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>主页</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="resource/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+        href="resource/fonts/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="resource/css/style.css">
 </head>
 
 <body>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
 
 
     <div class="name">
-        <center>Welcome
+        <center>欢迎用户：
             <?php
             // echo $_SESSION['valid'];
             
@@ -182,7 +182,7 @@ if (!isset($_SESSION['username'])) {
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="card">
-                                <img src="images/app-development.png" class="card-img-top" alt="...">
+                                <img src="../images/app-development.png" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h4 class="card-title">Development</h4>
                                     <p class="card-text">A concept is brought to life through the services various
@@ -233,7 +233,7 @@ if (!isset($_SESSION['username'])) {
         <div class="container">
             <div class="row text">
                 <div class="col-lg-6 col-md-12">
-                    <h3>our works</h3>
+                    <h3>购买服务</h3>
                     <h1>Our latest project</h1>
                     <hr>
                 </div>
@@ -309,32 +309,32 @@ if (!isset($_SESSION['username'])) {
 
             <div class="row gy-4">
 
-                <h1>contact us</h1>
-                <div class="col-lg-6">
+                <h1>联系我们</h1>
+                <div class="col-lg-12">
 
                     <div class="row gy-4">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
-                                <h3>Address</h3>
+                                <h3>地址</h3>
                                 <p>A108 Adam Street,<br>New Delhi, 535022</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="info-box">
                                 <i class="bi bi-telephone"></i>
-                                <h3>Call Us</h3>
+                                <h3>手机号</h3>
                                 <p>+91 9876545672<br>+91 8763456243</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="info-box">
                                 <i class="bi bi-envelope"></i>
-                                <h3>Email Us</h3>
+                                <h3>邮箱</h3>
                                 <p>bragspot@gmail.com<br>brag@gmail.com</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="info-box">
                                 <i class="bi bi-clock"></i>
                                 <h3>Open Hours</h3>
@@ -345,7 +345,7 @@ if (!isset($_SESSION['username'])) {
 
                 </div>
 
-                <div class="col-lg-6 form">
+                <!-- <div class="col-lg-6 form">
                     <form action="contact.php" method="post" class="php-email-form">
                         <div class="row gy-4">
 
@@ -373,7 +373,7 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </form>
 
-                </div>
+                </div> -->
 
             </div>
 
@@ -385,21 +385,13 @@ if (!isset($_SESSION['username'])) {
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12">
-                    <p class="logo"><i class="bi bi-chat"></i> Brag Spot</p>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <ul class="d-flex">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">services</a></li>
-                        <li><a href="#">projects</a></li>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">contact</a></li>
-                    </ul>
+
+                <div class="col-lg-2 col-md-12 col-sm-12">
+                    <p>备案号：</p>
                 </div>
 
                 <div class="col-lg-2 col-md-12 col-sm-12">
-                    <p>&copy;2023_BragSpot</p>
+                    <p>2026-company</p>
                 </div>
 
                 <div class="col-lg-1 col-md-12 col-sm-12">
@@ -415,11 +407,7 @@ if (!isset($_SESSION['username'])) {
 
     </footer>
 
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    <script src="resource/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 </body>
