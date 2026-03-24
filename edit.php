@@ -19,6 +19,22 @@ if (!isset($_SESSION['username'])) {
     <link href="resource/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="resource/css/style1.css">
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        }
+        
+        .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* min-height: 100vh; */
+        width: 100%;
+        }
+    </style>
 </head>
 
 <body>
