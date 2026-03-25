@@ -368,7 +368,6 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
             <?php endif; ?>
         </div>
     </section>
-    
 
     <!-- contact section  -->
 
