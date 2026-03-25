@@ -235,7 +235,7 @@ mysqli_query($conn, $order_query);
     <script>
         // 模拟支付宝支付链接（实际使用时需要替换为真实的支付宝 API 接口）
         const alipayConfig = {
-            appId: 'YOUR_APP_ID', // 替换为您的支付宝应用 ID
+            appId: '2021006140637693', // 替换为您的支付宝应用 ID
             returnUrl: window.location.origin + '/payment_success.php',
             notifyUrl: window.location.origin + '/payment_notify.php'
         };
@@ -289,13 +289,15 @@ mysqli_query($conn, $order_query);
         
         // 页面加载时生成二维码
         window.addEventListener('DOMContentLoaded', function() {
-            // 生成一个示例支付链接（实际应调用后端 API 获取真实链接）
-            const paymentUrl = `https://openapi.alipay.com/gateway.do?app_id=${alipayConfig.appId}&method=alipay.trade.page.pay&return_url=${encodeURIComponent(alipayConfig.returnUrl)}&out_trade_no=<?php echo $order_no; ?>&total_amount=<?php echo $project['price']; ?>&subject=<?php echo urlencode($project['title']); ?>`;
+            // 构建支付宝支付链接（实际应调用后端 API 获取真实链接）
+            // 这里直接跳转到网关页面生成正式链接
+            const gatewayUrl = `alipay_gateway.php?id=<?php echo $project_id; ?>&order_no=<?php echo $order_no; ?>`;
             
-            // 生成二维码
-            generateQRCode(paymentUrl);
+            // 为了演示，生成一个示例二维码
+            // 实际应该调用后端接口获取真实的支付 URL
+            generateQRCode(gatewayUrl);
             
-            // 监听支付结果（轮询）
+            // 监听支付状态（轮询）
             setInterval(checkPaymentStatus, 3000);
         });
         
@@ -305,6 +307,7 @@ mysqli_query($conn, $order_query);
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'paid') {
+                        alert('支付成功！');
                         window.location.href = 'projects.php?payment=success';
                     }
                 })

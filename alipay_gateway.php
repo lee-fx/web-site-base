@@ -38,36 +38,78 @@ $alipay_config = [
     'notify_url' => 'http://' . $_SERVER['HTTP_HOST'] . '/payment_notify.php',   // 异步通知地址
 ];
 
-// 构建支付请求参数
-$request_params = [
-    'method' => 'alipay.trade.page.pay',  // 电脑网站支付
-    'charset' => $alipay_config['charset'],
-    'sign_type' => $alipay_config['sign_type'],
-    'timestamp' => date('Y-m-d H:i:s'),
-    'version' => '1.0',
-    'app_id' => $alipay_config['app_id'],
-    'biz_content' => json_encode([
-        'out_trade_no' => $order_no,           // 商户订单号
-        'product_code' => 'FAST_INSTANT_TRADE_PAY',  // 产品码
-        'total_amount' => number_format(floatval($project['price']), 2),  // 订单金额
-        'subject' => $project['title'],        // 订单标题
-        'return_url' => $alipay_config['return_url'],
-        'notify_url' => $alipay_config['notify_url'],
-    ]),
+/**
+ * RSA2 签名函数
+ */
+function rsaSign($data, $privateKey) {
+    // 格式化私钥
+    $privateKey = "-----BEGIN RSA PRIVATE KEY-----\n" .
+        wordwrap($privateKey, 64, "\n", true) .
+        "\n-----END RSA PRIVATE KEY-----";
+    
+    $res = openssl_get_privatekey($privateKey);
+    if (!$res) {
+        error_log("私钥加载失败：" . openssl_error_string());
+        die("私钥配置错误");
+    }
+    
+    // 使用 SHA256 进行签名
+    openssl_sign($data, $sign, $res, OPENSSL_ALGO_SHA256);
+    openssl_free_key($res);
+    
+    return base64_encode($sign);
+}
+
+/**
+ * 生成签名前的参数字符串
+ */
+function getSignContent($params) {
+    ksort($params);
+    $stringToBeSigned = "";
+    $i = 0;
+    foreach ($params as $k => $v) {
+        if ("@" != substr($k, 0, 1) && '' !== $v && !is_null($v)) {
+            if ($i == 0) {
+                $stringToBeSigned .= "$k=$v";
+            } else {
+                $stringToBeSigned .= "&$k=$v";
+            }
+            $i++;
+        }
+    }
+    return $stringToBeSigned;
+}
+
+// 构建业务参数
+$biz_content = [
+    'out_trade_no' => $order_no,                    // 商户订单号
+    'product_code' => 'FAST_INSTANT_TRADE_PAY',     // 产品码（电脑网站支付固定值）
+    'total_amount' => number_format(floatval($project['price']), 2),  // 订单金额
+    'subject' => $project['title'],                 // 订单标题
 ];
 
-// 生成签名（实际使用时需要使用 RSA2 签名算法）
-// 这里使用简化版本，实际需要完整的签名函数
-ksort($request_params);
-$sign_string = http_build_query($request_params);
-// 使用商户私钥进行 RSA2 签名
-$request_params['sign'] = rsaSign($sign_string, $alipay_config['merchant_private_key']);
+// 构建支付请求参数
+$request_params = [
+    'app_id' => $alipay_config['app_id'],
+    'method' => 'alipay.trade.page.pay',
+    'charset' => $alipay_config['charset'],
+    'sign_type' => $alipay_config['sign_type'],
+    'timestamp' => date('Y-m-d H:i:s'),             // 时间戳格式：YYYY-MM-DD HH:MM:SS
+    'version' => '1.0',
+    'biz_content' => json_encode($biz_content),
+    'return_url' => $alipay_config['return_url'],
+    'notify_url' => $alipay_config['notify_url'],
+];
 
-// 为了演示，这里直接构建跳转 URL
-// $pay_url = $alipay_config['gateway_url'] . '?' . http_build_query($request_params);
+// 生成签名
+$sign_content = getSignContent($request_params);
+$request_params['sign'] = rsaSign($sign_content, $alipay_config['merchant_private_key']);
+
+// 构建 GET 请求 URL
+$pay_url = $alipay_config['gateway_url'] . '?' . http_build_query($request_params);
 
 // 重定向到支付宝支付页面
-header("localhost: " . $pay_url);
+header("Location: " . $pay_url);
 exit();
 ?>
 
