@@ -107,6 +107,7 @@ CREATE TABLE projects (
     image VARCHAR(255) DEFAULT NULL,
 		price VARCHAR(255) DEFAULT NULL,
 		user_id int(11)  DEFAULT 0,
+    `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '0 审核中 1 审核成功 2 审核未通过',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

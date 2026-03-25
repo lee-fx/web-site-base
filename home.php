@@ -266,7 +266,9 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
                     <h1>我们可以通过我们的服务帮助您解决问题.</h1>
                     <p>我们是一家品牌战略与数字设计机构，致力于打造在文化中举足轻重的品牌
                         拥有超过多年的经验.</p>
-                    <button class="btn">发布服务</button>
+                    <button class="btn"><a href="add_project.php" class="publish-btn" style="color: white;">
+                        <i class="bi bi-plus-circle"></i> 发布服务
+                    </a></button>
                 </div>
 
             </div>

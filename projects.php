@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-// 分页设置 - 每页显示 8 个项目（两行，每行 4 个）
+// 处理发布服务表单// 分页设置 - 每页显示 8 个项目（两行，每行 4 个）
 $limit = 8; // 每页显示的项目数量
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
@@ -186,6 +186,29 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
             color: #666;
             line-height: 1.6;
         }
+        
+        /* 发布服务按钮样式 - 提高优先级 */
+        a.publish-btn, button.publish-btn, .publish-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 12px 30px !important;
+            border-radius: 25px !important;
+            font-weight: 600 !important;
+            font-size: 1rem !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+            margin-bottom: 30px !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+        }
+        
+        a.publish-btn:hover, button.publish-btn:hover, .publish-btn:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.45) !important;
+            color: white !important;
+        }
     </style>
 </head>
 
@@ -250,12 +273,12 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
                 <div class="col-lg-6 col-md-12">
                     <h3>购买服务</h3>
                     <h1>好的服务应该被大众发现</h1>
-                    <hr>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <p>我们倾注心血打造信息发布平台。我们让您的创意落地生根，助您梦想成就辉煌，拥有卓越体验。</p>
-                </div>
             </div>
+                                         <div class="col-lg-6 col-md-12 d-flex align-items-end justify-content-end">
+                    <a href="add_project.php" class="publish-btn">
+                        <i class="bi bi-plus-circle"></i> 发布服务
+                    </a>
+                </div>
             
             <!-- 项目卡片 -->
             <div class="row project">
@@ -339,6 +362,3 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
     <script src="resource/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-</body>
-
-</html>
