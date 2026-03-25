@@ -219,7 +219,7 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
     <header class="navbar-section">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="home.php"><i class="bi bi-chat"></i> XXXXXXXXXX</a>
+                <a class="navbar-brand" href="home.php"><i class="bi bi-chat"></i> 杭州电鳐网络科技有限公司</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -294,7 +294,9 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
                                     <h4 class="card-title">标题：<?php echo htmlspecialchars($project['title']); ?></h4>
                                     <p class="card-text">日期：<?php echo date('Y-m-d H:i:s', strtotime($project['created_at'])); ?></p>
                                     <p class="card-text">价格：<?php echo $project['price'] ?>元</p>
-                                    <button>点击购买</button>
+                                    <a href="alipay.php?id=<?php echo $project['id']; ?>" class="btn btn-primary w-100">
+                                        <i class="bi bi-alipay"></i> 点击购买
+                                    </a>
                                 </div>
                             </div>
                         </div>
