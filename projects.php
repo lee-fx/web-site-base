@@ -99,11 +99,12 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
         }
         
         .card button {
+            display: block;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             padding: 8px 20px;
-            border-radius: 20px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -290,9 +291,10 @@ while ($row = mysqli_fetch_assoc($projects_result)) {
                                  class="card-img-top" alt="<?php echo htmlspecialchars($project['title']); ?>">
                             <div class="card-body">
                                 <div class="text">
-                                    <h4 class="card-title"><?php echo htmlspecialchars($project['title']); ?></h4>
-                                    <p class="card-text">时间 <?php echo date('Y-m-d H:i:s', strtotime($project['created_at'])); ?></p>
-                                    <button>点击 购买</button>
+                                    <h4 class="card-title">标题：<?php echo htmlspecialchars($project['title']); ?></h4>
+                                    <p class="card-text">日期：<?php echo date('Y-m-d H:i:s', strtotime($project['created_at'])); ?></p>
+                                    <p class="card-text">价格：<?php echo $project['price'] ?>元</p>
+                                    <button>点击购买</button>
                                 </div>
                             </div>
                         </div>

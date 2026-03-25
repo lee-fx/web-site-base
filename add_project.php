@@ -22,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (!empty($title)) {
         // 如果图片为空，使用默认图片
+        $key = rand(1, 4);
         if (empty($image)) {
-            $image = 'images/project1.jpg';
+            $image = 'images/project' . $key .'.jpg';
         }
         
         $insert_query = "INSERT INTO projects (title, content, image, price, user_id) VALUES ('$title', '$content', '$image', '$price', '$user_id')";
